@@ -6,11 +6,7 @@ function App() {
     console.log(user);
   };
 
-  return (
-    <div>
-      <AddUser onAddUser={addUserHandler} />
-    </div>
-  );
+  return <AddUser onAddUser={addUserHandler} />;
 }
 
 export default App;
