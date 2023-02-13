@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import styles from "./AddUser.module.css";
+import Button from "../UI/Button";
 
 const AddUser = (props) => {
   const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState(0);
+  const [userAge, setUserAge] = useState("");
 
   /// MAJ DU FORM A CHAQUE UPDATE DANS LE FORM
   const enteredUserName = (e) => {
-    e.preventDefault();
     setUserName(e.target.value);
   };
   const enteredUserAge = (e) => {
-    e.preventDefault();
     setUserAge(e.target.value);
   };
 
@@ -20,7 +19,15 @@ const AddUser = (props) => {
   // ON ENVOIE LE USER AU PARENT APP.JS
   const addUserHandler = (e) => {
     e.preventDefault();
-    const user = { name: userName, age: +userAge };
+    if (userAge.trim().length === 0 || userName.trim().length === 0) return;
+    if (+userAge < 1) return;
+    const user = {
+      id: Math.random().toString(),
+      name: userName,
+      age: +userAge,
+    };
+    setUserAge("");
+    setUserName("");
     props.onAddUser(user);
   };
   return (
@@ -40,7 +47,7 @@ const AddUser = (props) => {
           onChange={enteredUserAge}
           value={userAge}
         />
-        <button type="submit">Add User</button>
+        <Button type="submit">Add User</Button>
       </form>
     </Card>
   );
