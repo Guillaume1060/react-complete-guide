@@ -8,7 +8,7 @@ const UserList = (props) => {
 
   return (
     <Card classname={styles.users}>
-      <ul>{users}</ul>;
+      <ul>{users}</ul>
     </Card>
   );
 };
