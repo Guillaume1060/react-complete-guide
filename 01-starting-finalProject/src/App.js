@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import AddUser from "./components/Users/AddUser";
 import UserList from "./components/Users/UserList";
-import Modal from "./components/UI/ErrorModal";
 
 function App() {
   const [users, setUsers] = useState([{ id: 1, name: "Jean", age: 28 }]);

@@ -1,20 +1,23 @@
-// TODO
-// finir le modal d'erreur
 import Card from "./Card";
 import Button from "./Button";
+import styles from "./ErrorModal.module.css";
 
-const Modal = () => {
-  <Card>
-    <header>
-      <h2>Invalid Input</h2>
-    </header>
-    <div>
-      <p>Please enter a valid name and age (non-empty values).</p>
+const Modal = (props) => {
+  return (
+    <div className={styles.backdrop} onClick={props.btn}>
+      <Card className={styles.modal}>
+        <header className={styles.header}>
+          <h2>{props.title}</h2>
+        </header>
+        <div className={styles.content}>
+          <p>{props.message}</p>
+        </div>
+        <footer className={styles.actions}>
+          <Button onClick={props.btn}>Okay</Button>
+        </footer>
+      </Card>
     </div>
-    <footer>
-      <Button>Okay</Button>
-    </footer>
-  </Card>;
+  );
 };
 
 export default Modal;
