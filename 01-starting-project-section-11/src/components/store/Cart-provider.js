@@ -9,10 +9,12 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "add":
-      const updateItems = state.items;
+      const updatedItems = state.items.concat(action.item);
+      const updatedTotalAmount =
+        state.totalAmount + action.item.price * action.item.amount;
       return {
-        items: [...state, action.item],
-        totalAmount: state.totalAmount + action.item.totalAmount,
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
       };
     case "remove":
       return {
