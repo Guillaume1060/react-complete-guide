@@ -13,7 +13,7 @@ const MealItemForm = (props) => {
     console.log(entreredAmount);
     const entreredAmountNumber = +entreredAmount
 
-    if (entreredAmount.trim().length ===0 || entreredAmountNumber <1 || entreredAmountNumber >5) {
+    if (entreredAmount.trim().length === 0 || entreredAmountNumber <1 || entreredAmountNumber >5) {
         setAmountIsValid(false)
         return
     }
@@ -22,8 +22,7 @@ const MealItemForm = (props) => {
 
     return (
         <form onSubmit={submitHandler} className={classes.form} >
-            <Input label='Amount' input={{
-                ref:{amountInputRef},
+            <Input ref={amountInputRef} label='Amount' input={{
                 id: 'amount_'+props.id,
                 type: 'number',
                 defaultValue: '1',

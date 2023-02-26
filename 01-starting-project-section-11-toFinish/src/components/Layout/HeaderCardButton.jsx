@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 const HeaderCardButton=(props) => {
 const ctx = useContext(CartContext);
-const numberOfCartItems = ctx.items.reduce((cur,item)=>{return cur+item.amount},0)
+const numberOfCartItems = ctx.items.reduce((cur,item)=>{return cur+item.amount},0);
 
     return (
         <button onClick={props.onCart} className={classes.button}>
