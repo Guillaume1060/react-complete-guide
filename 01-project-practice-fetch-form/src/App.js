@@ -1,11 +1,13 @@
-import { useState } from 'react';
-
-import Header from './components/Layout/Header';
-import Meals from './components/Meals/Meals';
-import Cart from './components/Cart/Cart';
-import CartProvider from './store/CartProvider';
+import { useState } from "react";
+import { useRoutes } from "react-router-dom";
+import Header from "./components/Layout/Header";
+import Cart from "./components/Cart/Cart";
+import CartProvider from "./store/CartProvider";
+import AppRoute from "./routes/app.route";
 
 function App() {
+  const routes = useRoutes(AppRoute);
+
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -20,9 +22,7 @@ function App() {
     <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
+      <main>{routes}</main>
     </CartProvider>
   );
 }
