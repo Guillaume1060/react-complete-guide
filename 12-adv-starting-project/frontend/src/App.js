@@ -20,13 +20,20 @@
 // 7. Output the ID of the selected event on the EventDetailPage
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 import appRoute from "./app.route";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, useNavigation } from "react-router-dom";
+import MainNavigation from "./components/MainNavigation";
 
 function App() {
   const routes = useRoutes(appRoute);
+  const navigation = useNavigation();
+
   return (
     <>
-      <div>{routes}</div>
+      <MainNavigation />
+      <main>
+        {navigation.state === "loading" && <p>Loading</p>}
+        {routes}
+      </main>
     </>
   );
 }

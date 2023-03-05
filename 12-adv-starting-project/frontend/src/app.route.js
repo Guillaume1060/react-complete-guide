@@ -3,6 +3,7 @@ import Events from "./pages/EventsPage";
 import EventDetail from "./pages/EvenDetailPage";
 import EditEvent from "./pages/EditEventPage";
 import NewEvent from "./pages/NewEventPage";
+import { loader as eventsLoader } from "./pages/EventsPage";
 
 const appRoute = [
   {
@@ -12,6 +13,7 @@ const appRoute = [
   {
     path: "/events",
     element: <Events />,
+    loader: eventsLoader,
     children: [
       {
         path: ":id",
